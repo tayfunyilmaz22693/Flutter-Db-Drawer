@@ -129,6 +129,7 @@ class _TodoListMysqlState extends State<TodoListMysql> {
                           onPressed: () {
                             setState(() {
                               item.isStar = !item.isStar!;
+                              updateIsStar(item);
                             });
                           },
                           icon: Icon(
@@ -186,13 +187,13 @@ class _TodoListMysqlState extends State<TodoListMysql> {
   void updateIsComplated(Todo todo) async {
     final conn = await TodoDatabase.mysqlConn();
     await conn.query('update todo set iscomplated=? where id=?',
-        [!todo.isComplated, todo.id]);
+        [todo.isComplated, todo.id]);
   }
 
   void updateIsStar(Todo todo) async {
     final conn = await TodoDatabase.mysqlConn();
     await conn
-        .query('update todo set isStar=? where id=?', [!todo.isStar!, todo.id]);
+        .query('update todo set isStar=? where id=?', [todo.isStar!, todo.id]);
   }
 
   void deleteTodo(int id) async {

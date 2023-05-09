@@ -84,13 +84,7 @@ class _TodolistState extends State<Todolist> {
                     ),
                     subtitle: InkWell(
                       child: const Text("Bilgi Giriniz."),
-                      onTap: () {
-                        setState(() {
-                          item.isComplated = !item.isComplated;
-                          
-                        });
-                      },
-                      
+                     
                     ),
                     leading: item.isComplated
                         ? const Icon(Icons.check_box_outlined)
